@@ -49,7 +49,7 @@ x-airflow-common:
   # In order to add custom dependencies or upgrade provider distributions you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: myairflow:3.0.8
+  image: olalekanrasaq/wikipages-etl:3.0.1
   # build: .
   environment:
     &airflow-common-env
@@ -331,18 +331,5 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=olalekanrasaq1331@gmail.com  
-      - PGADMIN_DEFAULT_PASSWORD=Analyst@10          
-    ports:
-      - "5050:80"  
-    volumes:
-      - pgadmin_data:/var/lib/pgadmin  
-    depends_on:
-      - postgres
-
 volumes:
   postgres-db-volume:
-  pgadmin_data:
